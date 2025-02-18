@@ -17,8 +17,11 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.blue[400],
           centerTitle: true,
         ),
-        body: Row(
+        body: Container(
+          height: double.infinity,
+          child:Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(
               Icons.star,
@@ -53,7 +56,7 @@ class MyApp extends StatelessWidget {
         ),
         
       
-    );
+    ),);
   }
 }
 
