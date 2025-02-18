@@ -1,62 +1,79 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const LabClass05());
+  runApp(const MyApp());
 }
 
-class LabClass05 extends StatelessWidget {
-  const LabClass05({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Basic UI-Flutter-02 ",
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Basic UI-Flutter-02 "),
-          backgroundColor: Colors.blue[400],
-          centerTitle: true,
-          ),
+      title: 'Fancy Icon App',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const MyHomePage(title: 'Shoe widget'),
+    );
+  }
+}
 
-        body: Row(
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.star,
-              size: 50,
-              color: const Color.fromARGB(255, 13, 13, 14),
-
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: const [
+                Text(
+                  '50% OFF',
+                  style: TextStyle(fontSize: 20),
+                ),
+                Icon(Icons.favorite),
+              ],
             ),
-             Icon(
-              Icons.star,
-              size: 50,
-              color: const Color.fromARGB(255, 13, 13, 14),
-
+            const SizedBox(height: 20),
+            const Text(
+              'Nike Air Shoes',
+              style: TextStyle(fontSize: 18),
             ),
-             Icon(
-              Icons.star,
-              size: 50,
-              color: const Color.fromARGB(255, 13, 13, 14),
-        
-            ), 
-            Icon(
-              Icons.star,
-              size: 50,
-              color: const Color.fromARGB(255, 13, 13, 14),
-
-            ), 
-            Icon(
-              Icons.star,
-              size: 50,
-
-            ), 
-            
-            
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: const [
+                Text(
+                  '\$45,000',
+                  style: TextStyle(fontSize: 16),
+                ),
+                Text(
+                  '\$55,000',
+                  style: TextStyle(
+                    fontSize: 16,
+                    decoration: TextDecoration.lineThrough,
+                  ),
+                ),
+              ],
+            ),
           ],
-        
-          ),
-            ),
-         
-        );
+        ),
+      ),
+    );
   }
 }
