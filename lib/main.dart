@@ -10,53 +10,83 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Basic UI",
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Basic UI"),
-          backgroundColor: Colors.blue[400],
-          centerTitle: true,
-        ),
-        body: Container(
-          height: double.infinity,
-          child:Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.star,
-              size:50,
-              color: const Color.fromARGB(255, 13, 13, 14),
-            ),
-              Icon(
-              Icons.star,
-              size:50,
-              color: const Color.fromARGB(255, 13, 13, 14),
-            ),
-              Icon(
-              Icons.star,
-              size:50,
-              color: const Color.fromARGB(255, 13, 13, 14),
-            ),
-              Icon(
-              Icons.star,
-              size:50,
-              color: const Color.fromARGB(255, 13, 13, 14),
-            ),
-              Icon(
-              Icons.star_outline,
-              size:50,
-              
-            ),
-            
-          ],
-        ),
-
-
-        ),
-        
-      
-    ),);
+      title: 'Fancy Icon App',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const MyHomePage(title: 'Shoe widget'),
+    );
   }
 }
 
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  Text(
+                    '50\% OFF',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Icon(
+                    Icons.favorite
+                  )
+                ],
+              ),
+              const SizedBox(height: 20),
+
+              Image.network(
+                'https://tinyurl.com/cse414-nike-res', 
+                height: 300,
+                width: 300,
+              ),
+              const SizedBox(height: 20),
+
+              const Text(
+                'Nike Air Shoes',
+                style: TextStyle(fontSize: 18),
+              ),
+              const SizedBox(height: 20),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  Text(
+                    '\$45,000  ',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  Text(
+                    '\$55,000',
+                    style: TextStyle(
+                      fontSize: 16,
+                      decoration: TextDecoration.lineThrough,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
